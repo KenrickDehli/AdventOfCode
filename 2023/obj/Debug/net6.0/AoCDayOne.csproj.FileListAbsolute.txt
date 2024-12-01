@@ -1,0 +1,15 @@
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/AoCDayOne
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/AoCDayOne.deps.json
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/AoCDayOne.runtimeconfig.json
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/AoCDayOne.dll
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/ref/AoCDayOne.dll
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/bin/Debug/net6.0/AoCDayOne.pdb
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.csproj.AssemblyReference.cache
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.GeneratedMSBuildEditorConfig.editorconfig
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.AssemblyInfoInputs.cache
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.AssemblyInfo.cs
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.csproj.CoreCompileInputs.cache
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.dll
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/ref/AoCDayOne.dll
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.pdb
+/home/kenrick/RiderProjects/AoCDayOne/AoCDayOne/obj/Debug/net6.0/AoCDayOne.genruntimeconfig.cache
