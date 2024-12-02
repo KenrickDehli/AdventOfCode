@@ -48,9 +48,9 @@ func main() {
 			}
 
 		}
-		sameIncreasingPattern := !slices.Contains(increasing, !increasing[0])
-		sameDecreasingPattern := !slices.Contains(decreasing, !decreasing[0])
-		if sameIncreasingPattern && sameDecreasingPattern && differenceIsSafe {
+		safeIncreasingPattern := !slices.Contains(increasing, !increasing[0])
+		safeDecreasingPattern := !slices.Contains(decreasing, !decreasing[0])
+		if safeIncreasingPattern && safeDecreasingPattern && differenceIsSafe {
 			amountSafeReports += 1
 		}
 	}
