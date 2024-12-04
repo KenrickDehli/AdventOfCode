@@ -14,23 +14,24 @@ func main() {
 		log.Fatal(err)
 	}
 	input := strings.Split(string(file), "\n")
-	//	validForward := "XMAS"
-	//	validBackward := "SAMX"
+	validForward := "XMAS"
+	validBackward := "SAMX"
 	countOfRows := len(input) - 2
+	countOfXMAS := 0
 
 	for i := range input {
 		for j := range input[i] {
-			rightString := string(input[i][j:calcBounds(j+4, len(input[i])-1, false)])
-			leftString := string(input[i][calcBounds(j-4, 0, true):j])
-			upperString, lowerString := buildString(input, true, i, j, countOfRows)
-			fmt.Println("upper", upperString)
-			fmt.Println("right", rightString)
-			fmt.Println("left", leftString)
-			fmt.Println("lower", lowerString)
+			substrings := buildString(input, i, j, countOfRows, len(input[i]))
+			for k := range substrings {
+				if strings.Contains(substrings[k], validForward) || strings.Contains(substrings[k], validBackward) {
+					fmt.Println(substrings[k])
+					countOfXMAS++
+				}
+			}
 		}
 	}
 
-	fmt.Println("Finished program. The sum of uncorrupted enabled multiplications:")
+	fmt.Println("Finished program. The sum of XMAS:", countOfXMAS)
 }
 
 func calcBounds(value int, bound int, checknegative bool) int {
@@ -47,14 +48,19 @@ func calcBounds(value int, bound int, checknegative bool) int {
 
 }
 
-func buildString(str []string, upperLower bool, rowIndex int, columnIndex int, countOfRows int) (string, string) {
-	var ret1, ret2 string
-	if upperLower {
-		ret1 = string(str[calcBounds(rowIndex-1, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-2, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-3, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-4, 0, true)][columnIndex])
-		ret2 = string(str[calcBounds(rowIndex+1, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+2, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+3, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+4, countOfRows, false)][columnIndex])
-		return ret1, ret2
-	}
-	//ret1 = string(str[calcBounds(rowIndex)])
-	return ret1, ret2
+func buildString(str []string, rowIndex int, columnIndex int, countOfRows int, countOfColumns int) []string {
+	var right, left, up, down, upright, upleft, lowleft, lowright string
+	right = string(str[rowIndex][columnIndex:calcBounds(columnIndex+4, countOfColumns-1, false)])
+	left = string(str[rowIndex][calcBounds(columnIndex-4, 0, true):columnIndex])
 
+	up = string(str[calcBounds(rowIndex-1, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-2, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-3, 0, true)][columnIndex]) + string(str[calcBounds(rowIndex-4, 0, true)][columnIndex])
+	down = string(str[calcBounds(rowIndex+1, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+2, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+3, countOfRows, false)][columnIndex]) + string(str[calcBounds(rowIndex+4, countOfRows, false)][columnIndex])
+
+	upright = string(str[calcBounds(rowIndex-1, 0, true)][calcBounds(columnIndex+1, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex-2, 0, true)][calcBounds(columnIndex+2, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex-3, 0, true)][calcBounds(columnIndex+3, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex-4, 0, true)][calcBounds(columnIndex+4, countOfColumns-1, false)])
+	upleft = string(str[calcBounds(rowIndex-1, 0, true)][calcBounds(columnIndex-1, 0, true)]) + string(str[calcBounds(rowIndex-2, 0, true)][calcBounds(columnIndex-2, 0, true)]) + string(str[calcBounds(rowIndex-3, 0, true)][calcBounds(columnIndex-3, 0, true)]) + string(str[calcBounds(rowIndex-4, 0, true)][calcBounds(columnIndex-4, 0, true)])
+
+	lowleft = string(str[calcBounds(rowIndex+1, countOfRows, false)][calcBounds(columnIndex-1, 0, true)]) + string(str[calcBounds(rowIndex+2, countOfRows, false)][calcBounds(columnIndex-2, 0, true)]) + string(str[calcBounds(rowIndex+3, countOfRows, false)][calcBounds(columnIndex-3, 0, true)]) + string(str[calcBounds(rowIndex+4, countOfRows, false)][calcBounds(columnIndex-4, 0, true)])
+	lowright = string(str[calcBounds(rowIndex+1, countOfRows, false)][calcBounds(columnIndex+1, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex+2, countOfRows, false)][calcBounds(columnIndex+2, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex+3, countOfRows, false)][calcBounds(columnIndex+3, countOfColumns-1, false)]) + string(str[calcBounds(rowIndex+4, countOfRows, false)][calcBounds(columnIndex+4, countOfColumns-1, false)])
+
+	return []string{right, left, up, down, upright, upleft, lowleft, lowright}
 }
